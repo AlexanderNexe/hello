@@ -1,10 +1,11 @@
-FROM python:3
+FROM python:3 
 
-LABEL maintainer="Alexander Neusteuer" \
-      name="Client" \
-      version="1.0"
+WORKDIR /code
 
-RUN apt update -y \
-    && apt upgrade -y
+ENV PORT 80
 
-CMD [ "python", "helloworld.py" ]
+COPY helloworld.py /code/helloworld.py
+
+COPY . /code
+
+CMD ["node", "helloworld.py"]
