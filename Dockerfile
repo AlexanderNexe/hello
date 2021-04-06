@@ -1,3 +1,8 @@
 FROM python:3 
 
-CMD ["python", "helloworld.py"]
+RUN apt-get update \
+	&& apt-get upgrade -y
+
+COPY helloworld.py /code
+
+CMD ["python", "/data/helloworld.py"]
